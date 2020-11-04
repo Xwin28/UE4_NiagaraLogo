@@ -5650,7 +5650,7 @@ struct FSimulationContext
 };
 
 static float HackSpawnInterp = 1.0;
-void GetRandomInfo_Emitter_Determinism_true_Particle_Particle_Particle_Func_(int In_Seed, int In_Engine_System_TickCount, bool In_OverrideSeed, int In_Particles_UniqueID, int In_Emitter_RandomSeed, bool In_FixedOverrideSeed, int In_RandomnessMode, out NiagaraRandInfo Out_RandomInfo, out bool Out_UseDeterministicRandoms, inout FSimulationContext Context);
+void GetRandomInfo_Emitter_Determinism_false_Particle_Particle_Particle_Func_(int In_Seed, int In_Engine_System_TickCount, bool In_OverrideSeed, int In_Particles_UniqueID, int In_Emitter_RandomSeed, bool In_FixedOverrideSeed, int In_RandomnessMode, out NiagaraRandInfo Out_RandomInfo, out bool Out_UseDeterministicRandoms, inout FSimulationContext Context);
 void RandomRangeFloat_Func_(float In_Min, float In_Max, int In_Seed, int In_RandomnessMode, bool In_OverrideSeed, bool In_FixedOverrideSeed, out float Out_Result, inout FSimulationContext Context);
 void UniformRangedFloat_Emitter_Func_(out float Out_UniformRangedFloat, inout FSimulationContext Context);
 void UniformRangedFloat004_Emitter_Func_(out float Out_UniformRangedFloat, inout FSimulationContext Context);
@@ -5688,9 +5688,9 @@ void FloatFromCurve001_Emitter_Func_(out float Out_Value, inout FSimulationConte
 void Vector2DFromFloat001_Emitter_Func_(out float2 Out_Vec2, inout FSimulationContext Context);
 void ScaleSpriteSize_Emitter_Func_(inout FSimulationContext Context);
 float GetSpawnInterpolation();
-void GetRandomInfo_Emitter_Determinism_true_Particle_Particle_Particle_Func_(int In_Seed, int In_Engine_System_TickCount, bool In_OverrideSeed, int In_Particles_UniqueID, int In_Emitter_RandomSeed, bool In_FixedOverrideSeed, int In_RandomnessMode, out NiagaraRandInfo Out_RandomInfo, out bool Out_UseDeterministicRandoms, inout FSimulationContext Context)
+void GetRandomInfo_Emitter_Determinism_false_Particle_Particle_Particle_Func_(int In_Seed, int In_Engine_System_TickCount, bool In_OverrideSeed, int In_Particles_UniqueID, int In_Emitter_RandomSeed, bool In_FixedOverrideSeed, int In_RandomnessMode, out NiagaraRandInfo Out_RandomInfo, out bool Out_UseDeterministicRandoms, inout FSimulationContext Context)
 {
-	bool Constant32 = true;
+	bool Constant32 = false;
 	int Constant33 = 0;
 	bool Result = NiagaraAll(In_RandomnessMode == Constant33);
 	bool Result1 = Constant32 && Result;
@@ -5752,23 +5752,23 @@ void GetRandomInfo_Emitter_Determinism_true_Particle_Particle_Particle_Func_(int
 void RandomRangeFloat_Func_(float In_Min, float In_Max, int In_Seed, int In_RandomnessMode, bool In_OverrideSeed, bool In_FixedOverrideSeed, out float Out_Result, inout FSimulationContext Context)
 {
 	int Constant28 = (0);
-	bool Constant29 = true;
+	bool Constant29 = false;
 	int Constant30 = 0;
 	int Constant31 = (0);
-	NiagaraRandInfo GetRandomInfo_Emitter_Determinism_true_Particle_Particle_Particle_Func_Output_RandomInfo;
-	bool GetRandomInfo_Emitter_Determinism_true_Particle_Particle_Particle_Func_Output_UseDeterministicRandoms;
-	GetRandomInfo_Emitter_Determinism_true_Particle_Particle_Particle_Func_(In_Seed, Constant28, In_OverrideSeed, Constant30, Constant31, In_FixedOverrideSeed, In_RandomnessMode, GetRandomInfo_Emitter_Determinism_true_Particle_Particle_Particle_Func_Output_RandomInfo, GetRandomInfo_Emitter_Determinism_true_Particle_Particle_Particle_Func_Output_UseDeterministicRandoms, Context);
+	NiagaraRandInfo GetRandomInfo_Emitter_Determinism_false_Particle_Particle_Particle_Func_Output_RandomInfo;
+	bool GetRandomInfo_Emitter_Determinism_false_Particle_Particle_Particle_Func_Output_UseDeterministicRandoms;
+	GetRandomInfo_Emitter_Determinism_false_Particle_Particle_Particle_Func_(In_Seed, Constant28, In_OverrideSeed, Constant30, Constant31, In_FixedOverrideSeed, In_RandomnessMode, GetRandomInfo_Emitter_Determinism_false_Particle_Particle_Particle_Func_Output_RandomInfo, GetRandomInfo_Emitter_Determinism_false_Particle_Particle_Particle_Func_Output_UseDeterministicRandoms, Context);
 	float Result4 = In_Max - In_Min;
 	int Seed1;
 	int Seed2;
 	int Seed3;
-	Seed1 = GetRandomInfo_Emitter_Determinism_true_Particle_Particle_Particle_Func_Output_RandomInfo.Seed1;
-	Seed2 = GetRandomInfo_Emitter_Determinism_true_Particle_Particle_Particle_Func_Output_RandomInfo.Seed2;
-	Seed3 = GetRandomInfo_Emitter_Determinism_true_Particle_Particle_Particle_Func_Output_RandomInfo.Seed3;
+	Seed1 = GetRandomInfo_Emitter_Determinism_false_Particle_Particle_Particle_Func_Output_RandomInfo.Seed1;
+	Seed2 = GetRandomInfo_Emitter_Determinism_false_Particle_Particle_Particle_Func_Output_RandomInfo.Seed2;
+	Seed3 = GetRandomInfo_Emitter_Determinism_false_Particle_Particle_Particle_Func_Output_RandomInfo.Seed3;
 	float Result5 = rand_float(Result4, Seed1, Seed2, Seed3);
 	float Result6 = rand_float(Result4);
 	float Random_IfResult;
-	if(GetRandomInfo_Emitter_Determinism_true_Particle_Particle_Particle_Func_Output_UseDeterministicRandoms)
+	if(GetRandomInfo_Emitter_Determinism_false_Particle_Particle_Particle_Func_Output_UseDeterministicRandoms)
 	{
 	Random_IfResult = Result5;
 	}
@@ -5845,7 +5845,7 @@ void UniformRangedFloat005_Emitter_Func_(out float Out_UniformRangedFloat, inout
 
 void ParticleOwnerPosition_Emitter_Func_(out float3 Out_OutPosition, inout FSimulationContext Context)
 {
-	bool Constant55 = false;
+	bool Constant55 = true;
 	float3 Constant56 = float3(0,0,0);
 	float3 Vector_IfResult;
 	if(Constant55)
@@ -5869,7 +5869,7 @@ void Vector2DFromFloat_Emitter_Func_(out float2 Out_Vec2, inout FSimulationConte
 
 void InitializeParticle_SimulationPosition_Emitter_Func_(out float3 Out_OutPosition, inout FSimulationContext Context)
 {
-	bool Constant62 = false;
+	bool Constant62 = true;
 	float3 Constant63 = float3(0,0,0);
 	float3 Vector_IfResult1;
 	if(Constant62)
@@ -5886,24 +5886,24 @@ void InitializeParticle_SimulationPosition_Emitter_Func_(out float3 Out_OutPosit
 void RandomRangeFloat_Func_(float In_Min, float In_Max, int In_Seed, int In_RandomnessMode, bool In_OverrideSeed, out float Out_Result, inout FSimulationContext Context)
 {
 	int Constant70 = (0);
-	bool Constant71 = true;
+	bool Constant71 = false;
 	int Constant72 = 0;
 	int Constant73 = (0);
 	bool Constant74 = false;
-	NiagaraRandInfo GetRandomInfo_Emitter_Determinism_true_Particle_Particle_Particle_Func_Output_RandomInfo1;
-	bool GetRandomInfo_Emitter_Determinism_true_Particle_Particle_Particle_Func_Output_UseDeterministicRandoms1;
-	GetRandomInfo_Emitter_Determinism_true_Particle_Particle_Particle_Func_(In_Seed, Constant70, In_OverrideSeed, Constant72, Constant73, Constant74, In_RandomnessMode, GetRandomInfo_Emitter_Determinism_true_Particle_Particle_Particle_Func_Output_RandomInfo1, GetRandomInfo_Emitter_Determinism_true_Particle_Particle_Particle_Func_Output_UseDeterministicRandoms1, Context);
+	NiagaraRandInfo GetRandomInfo_Emitter_Determinism_false_Particle_Particle_Particle_Func_Output_RandomInfo1;
+	bool GetRandomInfo_Emitter_Determinism_false_Particle_Particle_Particle_Func_Output_UseDeterministicRandoms1;
+	GetRandomInfo_Emitter_Determinism_false_Particle_Particle_Particle_Func_(In_Seed, Constant70, In_OverrideSeed, Constant72, Constant73, Constant74, In_RandomnessMode, GetRandomInfo_Emitter_Determinism_false_Particle_Particle_Particle_Func_Output_RandomInfo1, GetRandomInfo_Emitter_Determinism_false_Particle_Particle_Particle_Func_Output_UseDeterministicRandoms1, Context);
 	float Result8 = In_Max - In_Min;
 	int Seed11;
 	int Seed21;
 	int Seed31;
-	Seed11 = GetRandomInfo_Emitter_Determinism_true_Particle_Particle_Particle_Func_Output_RandomInfo1.Seed1;
-	Seed21 = GetRandomInfo_Emitter_Determinism_true_Particle_Particle_Particle_Func_Output_RandomInfo1.Seed2;
-	Seed31 = GetRandomInfo_Emitter_Determinism_true_Particle_Particle_Particle_Func_Output_RandomInfo1.Seed3;
+	Seed11 = GetRandomInfo_Emitter_Determinism_false_Particle_Particle_Particle_Func_Output_RandomInfo1.Seed1;
+	Seed21 = GetRandomInfo_Emitter_Determinism_false_Particle_Particle_Particle_Func_Output_RandomInfo1.Seed2;
+	Seed31 = GetRandomInfo_Emitter_Determinism_false_Particle_Particle_Particle_Func_Output_RandomInfo1.Seed3;
 	float Result9 = rand_float(Result8, Seed11, Seed21, Seed31);
 	float Result10 = rand_float(Result8);
 	float Random_IfResult1;
-	if(GetRandomInfo_Emitter_Determinism_true_Particle_Particle_Particle_Func_Output_UseDeterministicRandoms1)
+	if(GetRandomInfo_Emitter_Determinism_false_Particle_Particle_Particle_Func_Output_UseDeterministicRandoms1)
 	{
 	Random_IfResult1 = Result9;
 	}
@@ -6001,7 +6001,7 @@ void InitializeParticle_Emitter_Func_(inout FSimulationContext Context)
 
 void SampleStaticMesh_Emitter_Func_(inout FSimulationContext Context)
 {
-	bool Constant75 = false;
+	bool Constant75 = true;
 	MeshTriCoordinate RandomTriCoord_UserStaticMeshOutput_Coord;
 	RandomTriCoord_UserStaticMesh(RandomTriCoord_UserStaticMeshOutput_Coord);
 	float3 GetTriTangents_UserStaticMeshOutput_Tangent;
@@ -6199,7 +6199,7 @@ void Drag_Emitter_Func_(inout FSimulationContext Context)
 
 void CurlNoiseForce_Emitter_Func_(int In_Emitter_RandomSeed, inout FSimulationContext Context)
 {
-	bool Constant111 = true;
+	bool Constant111 = false;
 	float AgeAdvancement_IfResult;
 	if(Constant111)
 	{
@@ -6551,7 +6551,7 @@ void SimulateMapSpawn(inout FSimulationContext Context)
 	UniformRangedFloat005_Emitter_Func_(UniformRangedFloat005_Emitter_Func_Output_UniformRangedFloat, Context);
 	bool Constant52 = false;
 	bool Constant53 = false;
-	bool Constant54 = false;
+	bool Constant54 = true;
 	float3 ParticleOwnerPosition_Emitter_Func_Output_OutPosition;
 	ParticleOwnerPosition_Emitter_Func_(ParticleOwnerPosition_Emitter_Func_Output_OutPosition, Context);
 	bool Constant57 = false;
@@ -6616,7 +6616,7 @@ void SimulateMapSpawn(inout FSimulationContext Context)
 	EnterStatScope(4 );
 	CalulateSubImage_Emitter_Func_(Context);
 	ExitStatScope( );
-	bool Constant85 = true;
+	bool Constant85 = false;
 	int Constant86 = (0);
 	bool Constant87 = true;
 	Context.MapSpawn.ApplyInitialForces.ApplyForcetoVelocity = Constant87;
@@ -6659,13 +6659,13 @@ void SimulateMapUpdate(inout FSimulationContext Context)
 	EnterStatScope(7 );
 	Drag_Emitter_Func_(Context);
 	ExitStatScope( );
-	bool Constant102 = true;
+	bool Constant102 = false;
 	int Constant103 = (0);
 	float Constant104 = (0.0);
 	Context.MapUpdate.Local.CurlNoiseForce.AgeAdvancement = Constant104;
 	float Constant105 = (0.0);
 	Context.MapUpdate.Local.CurlNoiseForce.DeterministicOffset = Constant105;
-	bool Constant106 = false;
+	bool Constant106 = true;
 	Context.MapUpdate.CurlNoiseForce.SamplePosition = Context.MapUpdate.Particles.Position;
 	float3 Constant107 = float3(0.0, 0.0, 0.0);
 	Context.MapUpdate.Local.CurlNoiseForce.SamplePosition = Constant107;
